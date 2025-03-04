@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>St. Croix Outdoor Patio Sofa - PatioHQ</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            font-size: 16px;
+        }
+        
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Custom image viewer size - FIXED SIZE */
+        .custom-image-viewer {
+            width: 650px;  /* Set your desired width here */
+            height: 600px; /* Set your desired height here */
+            flex-shrink: 0; /* Prevent shrinking */
+        }
+        
+        /* Product details container */
+        .product-details {
+            flex: 1;
+            min-width: 300px; /* Ensure minimum width */
+            padding-left: 2rem;
+        }
+        
+        /* Content container */
+        .content-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        
+        /* Mobile adjustments */
+        @media (max-width: 992px) {
+            .content-container {
+                flex-direction: column;
+            }
+            
+            .custom-image-viewer {
+                width: 100%;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            
+            .product-details {
+                padding-left: 0;
+                width: 100%;
+            }
+        }
+
+        .top-bar {
+            background-color: #000000;
+            color: #fff;
+            font-size: 14px;
+            padding: 5px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .top-bar-left {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .top-bar-left a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 400;
+        }
+        .top-bar-right {
+            display: flex;
+            align-items: center;
+        }
+        .search-box {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 20px;
+            padding: 6px 12px;
+            font-size: 14px;
+            color: white;
+        }
+        .search-box::placeholder {
+            color: #999;
+        }
+        
+        /* PatioHQ specific styles */
+        .color-swatch {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+            cursor: pointer;
+        }
+        
+        .color-swatch.active {
+            outline: 2px solid #000;
+            outline-offset: 2px;
+        }
+        
+        .dropdown-select {
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            border-radius: 4px;
+            width: 100%;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 16px;
+        }
+        
+        .quantity-input {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .quantity-btn {
+            background: #f5f5f5;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+        
+        .quantity-value {
+            padding: 8px 16px;
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+            min-width: 40px;
+            text-align: center;
+        }
+        
+        .add-to-cart-btn {
+            background: #000;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .add-to-cart-btn:hover {
+            background: #333;
+        }
+        
+        .star-rating {
+            color: #FFD700;
+        }
+        
+        .breadcrumb {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .breadcrumb a {
+            color: #666;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Header navigation styles */
+        .main-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .logo-container {
+            flex-shrink: 0;
+        }
+        
+        .logo-container img {
+            height: 60px;
+        }
+        
+        .main-nav {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-item {
+            font-size: 16px;
+            font-family: 'Lato', sans-serif;
+            color: #000;
+            text-decoration: none;
+            font-weight: 400;
+        }
+        
+        .nav-item.active, .nav-item:hover {
+            color: #900;
+        }
+        
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-input {
+            border: 1px solid #ccc;
+            padding: 0.5rem;
+            width: 200px;
+        }
+        
+        .search-button {
+            background: #000;
+            color: white;
+            border: none;
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-white">
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <a href="#">Order Status</a>
+            <a href="#">Financing</a>
+            <a href="#">Support</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <div class="top-bar-right flex items-center gap-4">
+            <span>Excellent 4.9 out of 5</span>
+            <a href="#" class="text-white">LOGIN</a>
+            <div class="flex items-center">
+                <span>$0.00</span>
+                <a href="#" class="ml-2">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="logo-container">
+            <a href="#">
+                <img src="assets/ph_dark_logo.png" alt="PatioHQ">
+            </a>
+        </div>
+        <nav class="main-nav">
+            <a href="#" class="nav-item">Collections</a>
+            <a href="#" class="nav-item">Furniture Types</a>
+            <a href="#" class="nav-item">Outdoor Patio Sets</a>
+            <a href="#" class="nav-item">Cushions</a>
+            <a href="#" class="nav-item">Accessories</a>
+            <a href="#" class="nav-item active">Clearance</a>
+        </nav>
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search">
+            <button class="search-button">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Promotional Bar -->
+    <div class="bg-gray-100 py-2 px-4 flex justify-between items-center">
+        <div class="flex items-center">
+            <i class="fas fa-truck mr-2"></i>
+            <span>FREE SHIPPING ON ORDERS OVER $499.99</span>
+        </div>
+        <div class="flex items-center">
+            <i class="fas fa-credit-card mr-2"></i>
+            <span>FINANCE YOUR PURCHASE OVER TIME</span>
+        </div>
+        <div class="flex items-center">
+            <i class="fas fa-user mr-2"></i>
+            <span>LOGIN FOR SPECIAL DISCOUNTS</span>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb px-5 py-3">
+        <div class="max-w-7xl mx-auto">
+            <a href="#">Home</a> / 
+            <a href="#">Furniture Collections</a> / 
+            <span class="text-[#333] ml-1">St. Croix</span>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="p-5 max-w-7xl mx-auto">
+        <!-- First Fold - FIXED LAYOUT with flexbox -->
+        <div class="content-container">
+            <!-- Left Column - Image Viewer and Thumbnails -->
+            <div class="flex flex-col gap-4">
+                <!-- Viewer Container - CUSTOM SIZE -->
+                <div id="imageViewer" class="relative custom-image-viewer bg-white select-none cursor-grab">
+                    <div id="loadingIndicator" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black/80 text-white px-6 py-3 rounded-lg font-medium tracking-wide text-sm">
+                        Loading images... 0%
+                    </div>
+                    <img id="currentImage" class="w-full h-full object-contain" alt="Product view">
+                </div>
+
+                <!-- Thumbnails -->
+                <div class="relative w-full mb-2">
+                    <div id="thumbnailContainer" class="flex gap-2.5 overflow-x-auto scroll-smooth hide-scrollbar p-1">
+                        <!-- Thumbnails will be inserted here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Product Info -->
+            <div class="product-details">
+                <h1 class="text-3xl font-semibold mb-4 text-[#1a1a1a]">St. Croix Outdoor Patio Sofa</h1>
+                <div class="mb-4">
+                    <div class="flex items-center">
+                        <span class="text-sm text-gray-600">SKU: KC267633</span>
+                        <div class="ml-4 star-rating">
+                            ★★★★★ <span class="text-gray-600">(24 Reviews)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-2xl font-bold mb-2">$1399.99</div>
+                <div class="text-green-600 mb-6">Free Shipping</div>
+                
+                <div class="mb-6">
+                    <h3 class="font-medium mb-2">Fabric Options</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="color-swatch active" style="background-color: #888;"></span>
+                        <span class="color-swatch" style="background-color: #3b82f6;"></span>
+                        <span class="color-swatch" style="background-color: #d4d4aa;"></span>
+                        <span class="color-swatch" style="background-color: #16a34a;"></span>
+                        <span class="color-swatch" style="background-color: #000;"></span>
+                        <span class="color-swatch" style="background-color: #dc2626;"></span>
+                        <span class="color-swatch" style="background-color: #7e22ce;"></span>
+                        <span class="color-swatch" style="background-color: #1e3a8a;"></span>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div>
+                        <label class="block mb-2 text-sm font-medium">Style</label>
+                        <select class="dropdown-select">
+                            <option>Select</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block mb-2 text-sm font-medium">Tie downs</label>
+                        <select class="dropdown-select">
+                            <option>Select</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="flex gap-4 mb-6">
+                    <div class="quantity-input">
+                        <button class="quantity-btn">-</button>
+                        <span class="quantity-value">1</span>
+                        <button class="quantity-btn">+</button>
+                    </div>
+                    <button class="add-to-cart-btn flex-grow">ADD TO CART</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Second Fold - Description and Specifications -->
+        <div class="mt-12 border-t border-[#eee] pt-8">
+            <div class="max-w-full">
+                <!-- Tabs Section -->
+                <div class="border-b border-[#eee]">
+                    <div class="flex">
+                        <button id="descriptionTab" class="px-6 py-3 text-base font-medium border-b-2 border-[#1a1a1a] text-[#1a1a1a]">
+                            Description
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tab Content -->
+                <div class="py-8">
+                    <div id="descriptionContent" class="space-y-6">
+                        <h3 class="font-semibold text-lg text-[#1a1a1a]">Enrich Your Living Space</h3>
+                        <p class="text-[#444] leading-relaxed">
+                            Discover the epitome of comfort and sophistication with our premium cushions, designed exclusively for those who appreciate the finer things in life. Each cushion is crafted with the highest quality materials, ensuring unmatched softness and durability that transforms your living space into a sanctuary of relaxation. The elegant design enhances any décor while the ergonomic support offers lasting comfort, perfect for unwinding after a long day. Experience the luxury of exceptional craftsmanship and feel the warmth of premium style that not only adorns your home but refine your everyday living. Embrace a lifestyle where beauty meets comfort in every detail.
+                        </p>
+                        
+                        <div class="grid grid-cols-2 gap-8 mt-6">
+                            <div>
+                                <h4 class="font-semibold mb-4">Product Features</h4>
+                                <ul class="list-disc pl-5 space-y-2 text-[#444]">
+                                    <li>High-density 1.5 lb foam core: firm 36 compression</li>
+                                    <li>Wrapped in durable plush Dacron</li>
+                                    <li>Premium-Sunbrella® cover resists UV fading, stains, mildew</li>
+                                    <li>Reinforced piped edges with elegant welted stitching</li>
+                                    <li>Discreet zipper for easy cleaning</li>
+                                    <li>Optional tie-downs for secure placement</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-4">Product Specs</h4>
+                                <ul class="list-disc pl-5 space-y-2 text-[#444]">
+                                    <li>Dimensions: 84"W x 32"D x 34"H</li>
+                                    <li>Weight Capacity: 750 lbs</li>
+                                    <li>Frame Material: Aluminum</li>
+                                    <li>Cushion Material: Sunbrella Fabric</li>
+                                    <li>Assembly Time: 30-45 minutes</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const imageNumbers = Array.from({ length: 24 }, (_, i) => i + 1);
+        const threeDImages = imageNumbers.map(num => `assets/frames/Sofa.1.${num}.jpg`);
+        const productImages = [
+            'assets/img/product1.jpg',
+            'assets/img/product2.jpg',
+            'assets/img/product3.jpg',
+            // Add more product images as needed
+        ];
+        
+        let currentImageIndex = 0;
+        let isDragging = false;
+        let startX = 0;
+        let isThreeDMode = true;
+        let loadedImages = 0;
+
+        // DOM Elements
+        const imageViewer = document.getElementById('imageViewer');
+        const currentImage = document.getElementById('currentImage');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const thumbnailContainer = document.getElementById('thumbnailContainer');
+        const descriptionTab = document.getElementById('descriptionTab');
+
+        // Preload 3D images
+        function preloadImages() {
+            threeDImages.forEach(url => {
+                const img = new Image();
+                img.onload = () => {
+                    loadedImages++;
+                    const progress = Math.round((loadedImages / threeDImages.length) * 100);
+                    loadingIndicator.textContent = `Loading images... ${progress}%`;
+                    if (loadedImages === threeDImages.length) {
+                        loadingIndicator.style.display = 'none';
+                    }
+                };
+                img.src = url;
+            });
+        }
+
+        // Show image
+        function showImage(index) {
+            currentImageIndex = index;
+            const imageUrl = isThreeDMode ? threeDImages[index] : productImages[index];
+            currentImage.src = imageUrl;
+        }
+
+        // Mouse/Touch event handlers
+        function handleMouseDown(e) {
+            if (!isThreeDMode) return;
+            
+            // For mouse events, check if it's the left button (button 0)
+            if (e.type.includes('mouse')) {
+                if (e.button !== 0) return;
+            }
+            
+            isDragging = true;
+            startX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+            imageViewer.style.cursor = 'grabbing';
+            
+            // Prevent default behavior to avoid text selection during drag
+            e.preventDefault();
+        }
+
+        function handleMouseMove(e) {
+            if (!isDragging || !isThreeDMode) return;
+            
+            // Prevent default behavior
+            e.preventDefault();
+            
+            const clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+            const deltaX = clientX - startX;
+            const sensitivity = threeDImages.length / imageViewer.offsetWidth;
+            const framesToMove = Math.floor(Math.abs(deltaX) * sensitivity);
+            
+            if (framesToMove > 0) {
+                const direction = deltaX > 0 ? -1 : 1;
+                let newIndex = currentImageIndex + (direction * framesToMove);
+                newIndex = ((newIndex % threeDImages.length) + threeDImages.length) % threeDImages.length;
+                showImage(newIndex);
+                startX = clientX;
+            }
+        }
+
+        function handleMouseUp(e) {
+            if (!isThreeDMode) return;
+            isDragging = false;
+            imageViewer.style.cursor = 'grab';
+        }
+
+        // Initialize thumbnails
+        function initializeThumbnails() {
+            // 3D View thumbnail
+            const threeDThumb = document.createElement('button');
+            threeDThumb.className = `flex-shrink-0 w-20 h-20 rounded-md overflow-hidden ${
+                isThreeDMode ? 'ring-2 ring-offset-2 ring-[#1a1a1a]' : ''
+            } transition-all hover:opacity-90`;
+            threeDThumb.innerHTML = `
+                <div class="relative w-full h-full">
+                    <img src="${threeDImages[0]}" alt="3D View" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 flex items-center justify-center bg-black/40 text-white text-xs font-medium">
+                        3D View
+                    </div>
+                </div>
+            `;
+            threeDThumb.onclick = () => {
+                isThreeDMode = true;
+                showImage(0);
+                updateThumbnailSelection();
+            };
+            thumbnailContainer.appendChild(threeDThumb);
+
+            // Product thumbnails
+            productImages.forEach((url, index) => {
+                const thumb = document.createElement('button');
+                thumb.className = `flex-shrink-0 w-20 h-20 rounded-md overflow-hidden transition-all hover:opacity-90`;
+                thumb.innerHTML = `
+                    <img src="${url}" alt="Thumbnail ${index + 1}" class="w-full h-full object-contain bg-white">
+                `;
+                thumb.onclick = () => {
+                    isThreeDMode = false;
+                    showImage(index);
+                    updateThumbnailSelection();
+                };
+                thumbnailContainer.appendChild(thumb);
+            });
+        }
+
+        // Update thumbnail selection
+        function updateThumbnailSelection() {
+            const thumbnails = thumbnailContainer.children;
+            Array.from(thumbnails).forEach((thumb, index) => {
+                if (isThreeDMode && index === 0) {
+                    thumb.classList.add('ring-2', 'ring-offset-2', 'ring-[#1a1a1a]');
+                } else if (!isThreeDMode && index === currentImageIndex + 1) {
+                    thumb.classList.add('ring-2', 'ring-offset-2', 'ring-[#1a1a1a]');
+                } else {
+                    thumb.classList.remove('ring-2', 'ring-offset-2', 'ring-[#1a1a1a]');
+                }
+            });
+        }
+
+        // Event listeners
+        imageViewer.addEventListener('mousedown', handleMouseDown, false);
+        window.addEventListener('mousemove', handleMouseMove, false);
+        window.addEventListener('mouseup', handleMouseUp, false);
+        imageViewer.addEventListener('mouseleave', handleMouseUp, false);
+        imageViewer.addEventListener('touchstart', handleMouseDown, { passive: false });
+        window.addEventListener('touchmove', handleMouseMove, { passive: false });
+        window.addEventListener('touchend', handleMouseUp, false);
+
+        // Keyboard controls
+        document.addEventListener('keydown', (e) => {
+            if (!isThreeDMode) return;
+            
+            if (e.key === 'ArrowLeft') {
+                let newIndex = currentImageIndex + 1;
+                showImage(((newIndex % threeDImages.length) + threeDImages.length) % threeDImages.length);
+            } else if (e.key === 'ArrowRight') {
+                let newIndex = currentImageIndex - 1;
+                showImage(((newIndex % threeDImages.length) + threeDImages.length) % threeDImages.length);
+            }
+        });
+
+        // Initialize
+        preloadImages();
+        initializeThumbnails();
+        showImage(0);
+        
+        // Color swatch selection
+        document.querySelectorAll('.color-swatch').forEach(swatch => {
+            swatch.addEventListener('click', () => {
+                document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+                swatch.classList.add('active');
+            });
+        });
+        
+        // Quantity buttons
+        const minusBtn = document.querySelector('.quantity-btn:first-child');
+        const plusBtn = document.querySelector('.quantity-btn:last-child');
+        const quantityValue = document.querySelector('.quantity-value');
+        
+        minusBtn.addEventListener('click', () => {
+            let value = parseInt(quantityValue.textContent);
+            if (value > 1) {
+                quantityValue.textContent = value - 1;
+            }
+        });
+        
+        plusBtn.addEventListener('click', () => {
+            let value = parseInt(quantityValue.textContent);
+            quantityValue.textContent = value + 1;
+        });
+    </script>
+</body>
+</html>
